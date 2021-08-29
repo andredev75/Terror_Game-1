@@ -42,7 +42,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField]
     private float heigh;
     private bool isspeed;
-    private bool iscrouched;
+    private bool iscrouched = false;
     
 
     // Start is called before the first frame update
@@ -103,10 +103,11 @@ public class Player_Controller : MonoBehaviour
 
     void Speed_crouched ()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && isground && iscrouched == false)
+        if(Input.GetKey(KeyCode.LeftShift) && iscrouched == false)
         {
             speed_current = speed_speed;
             isspeed = true;
+            Debug.Log("correndo");
         }
         else 
         {
