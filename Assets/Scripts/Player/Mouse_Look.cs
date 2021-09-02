@@ -7,7 +7,9 @@ public class Mouse_Look : MonoBehaviour
 
     public float mouse_X;
     public float mouse_Y;
-    public float mouse_sensitivy = 100f;
+    [SerializeField, Range(0,200)]
+    private  float mouse_sensitivy = 100f;
+
 
 
     public Transform player;

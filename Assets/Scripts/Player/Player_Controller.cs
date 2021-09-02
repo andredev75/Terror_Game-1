@@ -9,8 +9,8 @@ public class Player_Controller : MonoBehaviour
     private CharacterController controller;
     private Vector3 move;
 
-    private float p_X;
-    private float p_Z;
+    public float p_X;
+    public float p_Z;
 
     [SerializeField]
     private float jump_Force = 7f;
