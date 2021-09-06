@@ -8,6 +8,8 @@ public class UI_Menager : MonoBehaviour
 
     public GameObject mao_cursor;
 
+    public GameObject back_interactable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +25,10 @@ public class UI_Menager : MonoBehaviour
     public void cursor (bool state)
     {
         mao_cursor.SetActive(state);
+    }
+
+    public void Set_back_interactable (bool state)
+    {
+        back_interactable.SetActive(state);
     }
 }

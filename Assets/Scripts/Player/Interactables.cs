@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Interactables : MonoBehaviour
 {
+    public Item item;
+
+    [HideInInspector]
+    public bool ismoving;
+
     // Start is called before the first frame update
     void Start()
     {
