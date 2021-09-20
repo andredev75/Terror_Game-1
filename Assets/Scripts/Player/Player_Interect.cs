@@ -9,6 +9,8 @@ public class Player_Interect : MonoBehaviour
     public float ray_distance = 3f;
     private Interactables current_interactable;
     private Vector3 origin_position;
+    private Quaternion origin_rotation;
+    public float rotate_speed;
     private bool isviewer;
 
     public Transform object_viewer;
@@ -34,6 +36,11 @@ public class Player_Interect : MonoBehaviour
 
         if(isviewer)
         {
+            if(current_interactable.item.isinteractable && Input.GetMouseButton(0))
+            {
+                Rotateobject();
+            }
+
             if(cam_finishi && Input.GetMouseButtonDown(1))
             {
                 finishi_viewer();
@@ -72,6 +79,7 @@ public class Player_Interect : MonoBehaviour
                     if(current_interactable.item.isinteractable)
                     {
                         origin_position = current_interactable.transform.position;
+                        origin_rotation = current_interactable.transform.rotation;
                         StartCoroutine(Moving_Object(current_interactable, object_viewer.position));
                     }
 
@@ -104,6 +112,7 @@ public class Player_Interect : MonoBehaviour
 
         if(current_interactable.item.isinteractable)
         {
+            current_interactable.transform.rotation = origin_rotation;
             StartCoroutine(Moving_Object(current_interactable, origin_position));
         
         }
@@ -127,6 +136,14 @@ public class Player_Interect : MonoBehaviour
 
         obj.transform.position = position;
         obj.ismoving = false;
+    }
+
+    void Rotateobject ()
+    {
+        float eixo_x = Input.GetAxis("Mouse X");
+        float eixo_y = Input.GetAxis("Mouse Y");
+        current_interactable.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * eixo_y * rotate_speed, Space.World );
+        current_interactable.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * eixo_x * rotate_speed, Space.World );
     }
 
 

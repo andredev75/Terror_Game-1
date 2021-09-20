@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ray_distance: 4
+  rotate_speed: 200
   object_viewer: {fileID: 996178164}
   Onview:
     m_PersistentCalls:
