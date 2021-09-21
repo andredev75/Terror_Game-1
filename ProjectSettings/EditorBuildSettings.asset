@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 4745f03a508520144a198d5901d83a4f
   - enabled: 1
+    path: Assets/Scenes/Load_Assync.unity
+    guid: b40b82c6f40c7e74f963eb0e99568edb
+  - enabled: 1
     path: Assets/Scenes/Game - 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
