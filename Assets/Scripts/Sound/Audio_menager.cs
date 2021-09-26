@@ -12,14 +12,14 @@ public class Audio_menager : MonoBehaviour
     void Awake()
     {
 
-        //if (instance == null)
-            //instance = this;
-        //else 
-        //{
-            //Destroy(gameObject);
-            //return;
-        //}
-        //DontDestroyOnLoad(gameObject);
+        if (instance == null)
+            instance = this;
+        else 
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
 
         foreach (Sound s in sounds)
         {
@@ -33,7 +33,9 @@ public class Audio_menager : MonoBehaviour
         }  
     }
 
-    public void Start() {
+    public void Start() 
+    {
+        //Play("Ambiente");
 
         //if(!Race_Menager.instance.Isstarting)
         //{

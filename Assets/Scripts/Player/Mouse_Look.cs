@@ -7,24 +7,18 @@ public class Mouse_Look : MonoBehaviour
 
     public float mouse_X;
     public float mouse_Y;
-    [SerializeField, Range(0,200)]
+
+    [SerializeField, Range(0,300)]
     private  float mouse_sensitivy = 100f;
 
-
-
     public Transform player;
-
     private float Rotation_X = 0f;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
