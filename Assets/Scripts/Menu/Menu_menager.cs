@@ -7,16 +7,15 @@ using TMPro;
 
 public class Menu_menager : MonoBehaviour
 {
-    public static bool Gamepaused = false;
-    public GameObject pausemenuUI; 
-    public GameObject menuGAMEUI;  
-
     public static Menu_menager instante;
+    public static bool game_paused = false;
 
+    public GameObject pausemenuUI; 
+    
      void Awake() 
     {
         instante = this;
-        FindObjectOfType<Audio_menager>().Play("Inicio");     
+ 
     }
 
     void Update()
@@ -25,7 +24,7 @@ public class Menu_menager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
 
-            if (Gamepaused)
+            if (game_paused)
             {
                 Resume();
             }
@@ -53,19 +52,18 @@ public class Menu_menager : MonoBehaviour
 
     public void Resume ()
     {
-        //Debug.Log("1");
         pausemenuUI.SetActive(false);
-        menuGAMEUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
-        Gamepaused = false;
+        game_paused = false;
     }
 
     public void Pause ()
     {
-        //Debug.Log("2");
+        Cursor.lockState = CursorLockMode.None;
         pausemenuUI.SetActive(true);
-        menuGAMEUI.SetActive(false);
+        Cursor.visible = true;
         Time.timeScale = 0f;
-        Gamepaused = true;
+        game_paused = true;
     }
 }

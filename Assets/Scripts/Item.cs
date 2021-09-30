@@ -10,10 +10,10 @@ public class Item : ScriptableObject
 
     public bool isinteractable;
 
-
-    public AudioClip audioClip;
-
+    public AudioClip audioClip; 
 
     public string text;
+
+    
 
 }

@@ -19,9 +19,13 @@ public class Player_Interect : MonoBehaviour
     public UnityEvent Onview;
     public UnityEvent On_finishi_viwer;
 
+    private Audio_menager audioplayer;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        audioplayer = GetComponent<Audio_menager>();
         cam = Camera.main;
     }
 
@@ -67,14 +71,15 @@ public class Player_Interect : MonoBehaviour
                     {
                         return;
                     }
-
+                     UI_Menager.instance.cursor(false);
                     Onview.Invoke();
 
                     current_interactable = interactables;
 
                     isviewer = true;
+                    Interacao(current_interactable.item);
 
-                    Invoke("Cam_finishi", 1f);
+                    
 
                     if(current_interactable.item.isinteractable)
                     {
@@ -102,6 +107,7 @@ public class Player_Interect : MonoBehaviour
     {
         cam_finishi = true;
         UI_Menager.instance.Set_back_interactable(true);
+        UI_Menager.instance.Set_Legend("");
     }
 
     void finishi_viewer ()
@@ -144,6 +150,14 @@ public class Player_Interect : MonoBehaviour
         float eixo_y = Input.GetAxis("Mouse Y");
         current_interactable.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * eixo_y * rotate_speed, Space.World );
         current_interactable.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * eixo_x * rotate_speed, Space.World );
+    }
+
+
+    void Interacao (Item item)
+    {
+        UI_Menager.instance.Set_Legend(item.text);
+        //FindObjectOfType<Audio_menager>().Play(item.audioClip);
+        Invoke("Cam_finishi", 1f);
     }
 
 

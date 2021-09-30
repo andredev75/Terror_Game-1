@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isinteractable: 1
   audioClip: {fileID: 0}
-  text: 
+  text: "Esse item \xE9 um item pegavel e rotacionavel LUL"
