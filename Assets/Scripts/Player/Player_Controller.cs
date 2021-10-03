@@ -43,6 +43,8 @@ public class Player_Controller : MonoBehaviour
     private float heigh;
     private bool isspeed;
     private bool iscrouched = false;
+
+    private int next_Checkpoint;
     
 
     // Start is called before the first frame update
@@ -125,12 +127,28 @@ public class Player_Controller : MonoBehaviour
         else if (isspeed == false)
         {
             iscrouched = false;
-            heigh = 3.8f;
+            heigh = 5.5f;
             speed_current = speed_Walk;
 
         }
 
         controller.height  = Mathf.Lerp (controller.height, heigh,  3.5f * Time.deltaTime);
+
+    }
+
+    public void Checkpoint_Check (int checknumber)
+    {
+
+        if(checknumber == next_Checkpoint)
+        {
+            next_Checkpoint++;
+
+            if(next_Checkpoint == Puzzle_Verde_Menager.instance.allcheckpoint.Length)
+            {
+                Debug.Log("venceu o puzzle verde");
+            }
+        }
+
 
     }
 

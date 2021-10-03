@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: teste
   m_EditorClassIdentifier: 
   isinteractable: 1
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 05fea52345294624fa122e1b5b71f9c7, type: 3}
   text: "Esse item \xE9 um item pegavel e rotacionavel LUL"
+  image: {fileID: 0}

@@ -13,6 +13,7 @@ public class UI_Menager : MonoBehaviour
 
 
     public TMP_Text legend;
+    public Image Img_Interactable;
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +35,21 @@ public class UI_Menager : MonoBehaviour
     public void Set_back_interactable (bool state)
     {
         back_interactable.SetActive(state);
+
+        if(!state)
+        {
+            Img_Interactable.enabled = false;
+        }
     }
 
     public void Set_Legend (string text)
     {
         legend.text = text;
+    }
+
+    public void Set_Image (Sprite sprite)
+    {
+       Img_Interactable.sprite = sprite;
+       Img_Interactable.enabled = true;
     }
 }

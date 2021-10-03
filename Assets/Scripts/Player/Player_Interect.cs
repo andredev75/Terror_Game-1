@@ -19,13 +19,13 @@ public class Player_Interect : MonoBehaviour
     public UnityEvent Onview;
     public UnityEvent On_finishi_viwer;
 
-    private Audio_menager audioplayer;
+    private Audio_P audioplayer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        audioplayer = GetComponent<Audio_menager>();
+        audioplayer = GetComponent<Audio_P>();
         cam = Camera.main;
     }
 
@@ -155,9 +155,13 @@ public class Player_Interect : MonoBehaviour
 
     void Interacao (Item item)
     {
+        if (item.image != null)
+        {
+            UI_Menager.instance.Set_Image(item.image);
+        }
+        audioplayer.PlayAudio(item.audioClip);
         UI_Menager.instance.Set_Legend(item.text);
-        //FindObjectOfType<Audio_menager>().Play(item.audioClip);
-        Invoke("Cam_finishi", 1f);
+        Invoke("Cam_finishi", item.audioClip.length + 1f );
     }
 
 
