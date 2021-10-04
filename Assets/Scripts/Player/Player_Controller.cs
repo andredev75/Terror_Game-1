@@ -80,6 +80,7 @@ public class Player_Controller : MonoBehaviour
         move = transform.right *  p_X +  transform.forward * p_Z;
 
         controller.Move (move * speed_current * Time.deltaTime);
+
     }
 
     void Ground_Check ()
