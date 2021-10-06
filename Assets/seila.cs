@@ -7,8 +7,8 @@ public class seila : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<Audio_menager>().Play("Theme");
-        FindObjectOfType<Audio_menager>().Play("chuva");
+        FindObjectOfType<Audio_menager>().Play("Fogueira");
+        //FindObjectOfType<Audio_menager>().Play("chuva");
     }
 
     // Update is called once per frame

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Image_teste
   m_EditorClassIdentifier: 
   isinteractable: 0
-  audioClip: {fileID: 8300000, guid: 0d18f3d109d5c214e90ed16deddbcf50, type: 3}
+  audioClip: {fileID: 8300000, guid: b4cf9139b9b1c4544bc01c086c76dbb9, type: 3}
   text: 
   image: {fileID: 21300000, guid: aa5ac7b186aaffb469074014a2d96fce, type: 3}

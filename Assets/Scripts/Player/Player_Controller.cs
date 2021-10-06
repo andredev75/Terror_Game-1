@@ -45,6 +45,14 @@ public class Player_Controller : MonoBehaviour
     private bool iscrouched = false;
 
     private int next_Checkpoint;
+
+    [Header("Puzzle Verde")]
+    public GameObject lanterna_v1;
+    public GameObject lanterna_v2;
+    public GameObject lanterna_v3;
+    public GameObject lanterna_v4;
+    public GameObject lanterna_VERMELHO;
+    public GameObject portao;
     
 
     // Start is called before the first frame update
@@ -66,7 +74,6 @@ public class Player_Controller : MonoBehaviour
 
     void FixedUpdate() 
     {
-        
         move_Player();
         Jump ();
         Speed_crouched ();
@@ -87,6 +94,7 @@ public class Player_Controller : MonoBehaviour
     {
 
         isground = Physics.CheckSphere(ground_check.position,groud_Distance,ground_Mask);
+        
         controller.Move (move * speed_current * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
@@ -97,7 +105,7 @@ public class Player_Controller : MonoBehaviour
 
     void Jump ()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isground)
         {
             velocity.y = Mathf.Sqrt (jump_Force * -2f * gravity);
         }
@@ -128,7 +136,7 @@ public class Player_Controller : MonoBehaviour
         else if (isspeed == false)
         {
             iscrouched = false;
-            heigh = 5.5f;
+            heigh = 5.1f;
             speed_current = speed_Walk;
 
         }
@@ -147,6 +155,14 @@ public class Player_Controller : MonoBehaviour
             if(next_Checkpoint == Puzzle_Verde_Menager.instance.allcheckpoint.Length)
             {
                 Debug.Log("venceu o puzzle verde");
+                lanterna_v1.SetActive(true);
+                lanterna_v2.SetActive(true);
+                lanterna_v3.SetActive(true);
+                lanterna_v4.SetActive(true);
+                lanterna_VERMELHO.SetActive(false);
+                Destroy(portao);
+                FindObjectOfType<Audio_menager>().Play("Terminoupuzzle");
+
             }
         }
 
