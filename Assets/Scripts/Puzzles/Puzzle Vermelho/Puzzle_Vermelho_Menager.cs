@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Puzzle_Verde_Menager : MonoBehaviour
+public class Puzzle_Vermelho_Menager : MonoBehaviour
 {
-    public static Puzzle_Verde_Menager instance;
+    public static Puzzle_Vermelho_Menager instance;
     public Checkpoints[] allcheckpoint;
 
     private void Awake()
@@ -31,4 +31,5 @@ public class Puzzle_Verde_Menager : MonoBehaviour
 
 
     }
+
 }

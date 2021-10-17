@@ -53,7 +53,7 @@ public class Player_Controller : MonoBehaviour
     public GameObject lanterna_v4;
     public GameObject lanterna_VERMELHO;
     public GameObject portao;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,30 +72,30 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         move_Player();
-        Jump ();
-        Speed_crouched ();
+        Jump();
+        Speed_crouched();
 
     }
-    void move_Player ()
+    void move_Player()
     {
         p_X = Input.GetAxis("Horizontal");
-        p_Z = Input.GetAxis ("Vertical");
+        p_Z = Input.GetAxis("Vertical");
 
-        move = transform.right *  p_X +  transform.forward * p_Z;
+        move = transform.right * p_X + transform.forward * p_Z;
 
-        controller.Move (move * speed_current * Time.deltaTime);
+        controller.Move(move * speed_current * Time.deltaTime);
 
     }
 
-    void Ground_Check ()
+    void Ground_Check()
     {
 
-        isground = Physics.CheckSphere(ground_check.position,groud_Distance,ground_Mask);
-        
-        controller.Move (move * speed_current * Time.deltaTime);
+        isground = Physics.CheckSphere(ground_check.position, groud_Distance, ground_Mask);
+
+        controller.Move(move * speed_current * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
 
@@ -103,30 +103,30 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    void Jump ()
+    void Jump()
     {
         if (Input.GetButtonDown("Jump") && isground)
         {
-            velocity.y = Mathf.Sqrt (jump_Force * -2f * gravity);
+            velocity.y = Mathf.Sqrt(jump_Force * -2f * gravity);
         }
 
     }
 
-    void Speed_crouched ()
+    void Speed_crouched()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && iscrouched == false)
+        if (Input.GetKey(KeyCode.LeftShift) && iscrouched == false)
         {
             speed_current = speed_speed;
             isspeed = true;
             Debug.Log("correndo");
         }
-        else 
+        else
         {
             speed_current = speed_Walk;
             isspeed = false;
         }
 
-        if(Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             iscrouched = true;
             heigh = 2.7f;
@@ -141,19 +141,19 @@ public class Player_Controller : MonoBehaviour
 
         }
 
-        controller.height  = Mathf.Lerp (controller.height, heigh,  3.5f * Time.deltaTime);
+        controller.height = Mathf.Lerp(controller.height, heigh, 3.5f * Time.deltaTime);
 
     }
 
-    public void Checkpoint_Check (int checknumber)
+    public void Checkpoint_Check_Verde(int checknumber)
     {
 
-        if(checknumber == next_Checkpoint)
+        if (checknumber == next_Checkpoint)
         {
             next_Checkpoint++;
-
-            if(next_Checkpoint == Puzzle_Verde_Menager.instance.allcheckpoint.Length)
+            if (next_Checkpoint == Puzzle_Verde_Menager.instance.allcheckpoint.Length)
             {
+
                 Debug.Log("venceu o puzzle verde");
                 lanterna_v1.SetActive(true);
                 lanterna_v2.SetActive(true);
@@ -166,8 +166,50 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
+    }
+
+
+    public void Checkpoint_Check_Vermelho(int checknumber)
+    {
+
+        if (checknumber == next_Checkpoint)
+        {
+            next_Checkpoint++;
+            Debug.Log("acertou");
+            if (next_Checkpoint == Puzzle_Vermelho_Menager.instance.allcheckpoint.Length)
+            {
+                Debug.Log("venceu o puzzle vermelho");
+            }
+        }
+        else
+        {
+            next_Checkpoint = 0;
+            Debug.Log("errou");
+        }
+
 
     }
 
-    
+    public void Checkpoint_Check_Azul(int checknumber)
+    {
+
+        if (checknumber == next_Checkpoint)
+        {
+            next_Checkpoint++;
+            Debug.Log("acertou");
+            if (next_Checkpoint == Puzzle_Azul_Menager.instance.allcheckpoint.Length)
+            {
+                Debug.Log("venceu o puzzle Azul");
+            }
+        }
+        else
+        {
+            next_Checkpoint = 0;
+            Debug.Log("errou");
+        }
+
+
+    }
+
+
 }
