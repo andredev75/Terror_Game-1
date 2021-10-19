@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player_Controller : MonoBehaviour
 {
+    public static Player_Controller instance;
+
     [Header("Movimentação Player")]
     [SerializeField]
     private CharacterController controller;
-    private Vector3 move;
+
+    [HideInInspector]
+    public Vector3 move;
 
     public float p_X;
     public float p_Z;
@@ -55,11 +60,30 @@ public class Player_Controller : MonoBehaviour
     public GameObject portao;
 
 
+    [Header("Som dos passos")]
+
+    [SerializeField]
+    private List<AudioClip> foostep_sound = new List<AudioClip>();
+    [SerializeField]
+    private AudioClip jump_sound;
+
+
+    private AudioSource AudioSource;
+    private float m_StepCycle;
+    private float m_NextStep;
+    [SerializeField] private float m_StepInterval;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        AudioSource = GetComponent<AudioSource>();
         heigh = controller.height;
+        instance = this;
+
+
     }
 
     // Update is called once per frame
@@ -88,6 +112,13 @@ public class Player_Controller : MonoBehaviour
 
         controller.Move(move * speed_current * Time.deltaTime);
 
+        if (p_Z <= 1 && isground == true)
+        {
+            ProgressStepCycle();
+        }
+
+
+
     }
 
     void Ground_Check()
@@ -108,6 +139,7 @@ public class Player_Controller : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isground)
         {
             velocity.y = Mathf.Sqrt(jump_Force * -2f * gravity);
+            PlayJumpSound();
         }
 
     }
@@ -119,11 +151,13 @@ public class Player_Controller : MonoBehaviour
             speed_current = speed_speed;
             isspeed = true;
             Debug.Log("correndo");
+
         }
         else
         {
             speed_current = speed_Walk;
             isspeed = false;
+
         }
 
         if (Input.GetKey(KeyCode.LeftControl))
@@ -143,6 +177,41 @@ public class Player_Controller : MonoBehaviour
 
         controller.height = Mathf.Lerp(controller.height, heigh, 3.5f * Time.deltaTime);
 
+    }
+
+    private void PlayJumpSound()
+    {
+        AudioSource.clip = jump_sound;
+        AudioSource.Play();
+        Debug.Log("pulando");
+    }
+
+    private void ProgressStepCycle()
+    {
+        if (controller.velocity.sqrMagnitude > 0 && (p_X != 0 || p_Z != 0))
+        {
+            PlayFootStepAudio();
+        }
+
+    }
+
+    private void PlayFootStepAudio()
+    {
+        if (controller.isGrounded)
+        {
+            return;
+        }
+
+        Debug.Log("andandotoca raul");
+        // pick & play a random footstep sound from the array,
+        // excluding sound at index 0
+        int n = Random.Range(0, foostep_sound.Count);
+        AudioSource.clip = foostep_sound[n];
+        AudioSource.PlayOneShot(AudioSource.clip);
+        Debug.Log("tocou");
+        // move picked sound to index 0 so it's not picked next time
+        //foostep_sound[n] = foostep_sound[0];
+        //foostep_sound[0] = AudioSource.clip;
     }
 
     public void Checkpoint_Check_Verde(int checknumber)

@@ -1857,6 +1857,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: foqueira (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2981785031353749870, guid: d0499503157f04f468b6cca42597f5f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0499503157f04f468b6cca42597f5f6, type: 3}
 --- !u!1 &329636477
@@ -2213,6 +2217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio_Menager
       objectReference: {fileID: 0}
+    - target: {fileID: 4046421791589609100, guid: a676b7e2f9440a54393eeb494f53e346, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6276192228025481909, guid: a676b7e2f9440a54393eeb494f53e346, type: 3}
       propertyPath: sounds.Array.size
       value: 3
@@ -2346,8 +2354,8 @@ GameObject:
   - component: {fileID: 460766433}
   - component: {fileID: 460766432}
   - component: {fileID: 460766434}
-  - component: {fileID: 460766435}
   - component: {fileID: 460766436}
+  - component: {fileID: 460766437}
   m_Layer: 0
   m_Name: Player_Frirst_Person
   m_TagString: Player
@@ -2405,6 +2413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 460766428}
+  move: {x: 0, y: 0, z: 0}
   p_X: 0
   p_Z: 0
   jump_Force: 5
@@ -2425,6 +2434,10 @@ MonoBehaviour:
   lanterna_v4: {fileID: 1373499771}
   lanterna_VERMELHO: {fileID: 786001508}
   portao: {fileID: 663976110}
+  foostep_sound:
+  - {fileID: 8300000, guid: b4cf9139b9b1c4544bc01c086c76dbb9, type: 3}
+  jump_sound: {fileID: 8300000, guid: 05fea52345294624fa122e1b5b71f9c7, type: 3}
+  m_StepInterval: 0
 --- !u!114 &460766431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2480,7 +2493,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 564792411db941849a5cc3832a661df6, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2591,18 +2604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 460766430}
---- !u!114 &460766435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460766427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19d713cc8ee30d54192dd618538e306c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &460766436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2617,6 +2618,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tp: {fileID: 602228318}
   player: {fileID: 460766427}
+--- !u!114 &460766437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460766427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3920c8a38a45de94f951927c0ab1619a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SomDePassos: {fileID: 8300000, guid: 564792411db941849a5cc3832a661df6, type: 3}
+  TempoDoPasso: 0.6
+  CameraDoPlayer: {fileID: 963194225}
+  intensidadeDoMovimento: 1
+  movimentoDaCamera: 0
+  comecarContagem: 0
 --- !u!1 &463839075
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,7 +5236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingBobbingSpeed: 10
-  bobbingAmount: 0.1
+  bobbingAmount: 0.402
   controller: {fileID: 460766430}
 --- !u!1 &965122604
 GameObject:
@@ -6757,7 +6776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 450717c7268f42a47b05510575a27c91, type: 3}
       propertyPath: m_TagString
-      value: terra
+      value: TERRA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450717c7268f42a47b05510575a27c91, type: 3}

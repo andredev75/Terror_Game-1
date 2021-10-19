@@ -9,6 +9,7 @@ TagManager:
   - Checkpoint_Verde
   - Checkpoint_Vermelho
   - Checkpoint_Azul
+  - TERRA
   layers:
   - Default
   - TransparentFX

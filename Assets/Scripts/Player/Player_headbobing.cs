@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_headbobing : MonoBehaviour
 {
     public float walkingBobbingSpeed = 14f;
-    [SerializeField,Range(0.1f,0.3f)] public float bobbingAmount = 0.1f;
+    [SerializeField, Range(0.1f, 0.5f)] public float bobbingAmount = 0.1f;
     public Player_Controller controller;
 
     float defaultPosY = 0;
@@ -21,7 +21,7 @@ public class Player_headbobing : MonoBehaviour
     void Update()
     {
 
-        if(Mathf.Abs(controller.p_X) > 0.1f || Mathf.Abs(controller.p_Z) > 0.1f)
+        if (Mathf.Abs(controller.p_X) > 0.1f || Mathf.Abs(controller.p_Z) > 0.1f)
         {
             //Player is moving
             timer += Time.deltaTime * walkingBobbingSpeed;

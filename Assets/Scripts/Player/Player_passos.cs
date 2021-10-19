@@ -16,7 +16,7 @@ public class Player_passos : MonoBehaviour
 
     void Update()
     {
-        if (controller.isGrounded == true && controller.velocity.magnitude > 1f && GetComponent<AudioSource>().isPlaying == false)
+        if (controller.isGrounded == true && controller.velocity.sqrMagnitude > 1f && GetComponent<AudioSource>().isPlaying == false)
         {
 
             GetComponent<AudioSource>().Play();
