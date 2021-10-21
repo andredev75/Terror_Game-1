@@ -9,6 +9,7 @@ public class PASSOS : MonoBehaviour
     private bool Esperando;
     private float TempoDeEspera;
     public float TempoDoPasso = 0.6f;
+
     //variaveis de movimento da camera
     public GameObject CameraDoPlayer;
     public float intensidadeDoMovimento;
@@ -39,7 +40,7 @@ public class PASSOS : MonoBehaviour
                 }
             }
         }
-        if (!controller.isGrounded || controller.velocity.magnitude <= 0.19f)
+        if (!controller.isGrounded || controller.velocity.magnitude <= 0.29f)
         {
             GetComponent<AudioSource>().Stop();
             CameraDoPlayer.transform.localPosition = Vector3.Lerp(CameraDoPlayer.transform.localPosition, PosicaoInicialDaCamera + PosicaoInicialDaCamera * 0.25f * intensidadeDoMovimento, 10 * Time.deltaTime);

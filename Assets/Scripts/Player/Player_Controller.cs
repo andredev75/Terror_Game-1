@@ -12,7 +12,7 @@ public class Player_Controller : MonoBehaviour
     private CharacterController controller;
 
     [HideInInspector]
-    public Vector3 move;
+    public Vector3 move1;
 
     public float p_X;
     public float p_Z;
@@ -75,6 +75,9 @@ public class Player_Controller : MonoBehaviour
 
 
 
+    public float speed = 12f;
+    public FootstepsSystem footsteps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +85,10 @@ public class Player_Controller : MonoBehaviour
         AudioSource = GetComponent<AudioSource>();
         heigh = controller.height;
         instance = this;
+
+
+        speed = 12f;
+        footsteps = GetComponent<FootstepsSystem>();
 
 
     }
@@ -102,20 +109,36 @@ public class Player_Controller : MonoBehaviour
         Jump();
         Speed_crouched();
 
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
+        {
+            PlayFootStepAudio();
+        }
+
     }
     void move_Player()
     {
         p_X = Input.GetAxis("Horizontal");
         p_Z = Input.GetAxis("Vertical");
 
-        move = transform.right * p_X + transform.forward * p_Z;
+        move1 = transform.right * p_X + transform.forward * p_Z;
 
-        controller.Move(move * speed_current * Time.deltaTime);
+        controller.Move(move1 * speed_current * Time.deltaTime);
 
-        if (p_Z <= 1 && isground == true)
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        if (x != 0f || z != 0f)
         {
-            ProgressStepCycle();
+            footsteps.PlayFootSteps();
         }
+        else
+        {
+            footsteps.ResetFootSteps();
+        }
+
+        Vector3 move = transform.right * x + transform.forward * z;
+        controller.Move(move * speed * Time.deltaTime);
 
 
 
@@ -126,7 +149,7 @@ public class Player_Controller : MonoBehaviour
 
         isground = Physics.CheckSphere(ground_check.position, groud_Distance, ground_Mask);
 
-        controller.Move(move * speed_current * Time.deltaTime);
+        controller.Move(move1 * speed_current * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
 
@@ -184,15 +207,6 @@ public class Player_Controller : MonoBehaviour
         AudioSource.clip = jump_sound;
         AudioSource.Play();
         Debug.Log("pulando");
-    }
-
-    private void ProgressStepCycle()
-    {
-        if (controller.velocity.sqrMagnitude > 0 && (p_X != 0 || p_Z != 0))
-        {
-            PlayFootStepAudio();
-        }
-
     }
 
     private void PlayFootStepAudio()
