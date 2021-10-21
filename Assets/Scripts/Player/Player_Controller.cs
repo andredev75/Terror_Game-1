@@ -61,24 +61,14 @@ public class Player_Controller : MonoBehaviour
 
 
     [Header("Som dos passos")]
-
-    [SerializeField]
-    private List<AudioClip> foostep_sound = new List<AudioClip>();
     [SerializeField]
     private AudioClip jump_sound;
 
-
     private AudioSource AudioSource;
-    private float m_StepCycle;
-    private float m_NextStep;
-    [SerializeField] private float m_StepInterval;
-
-
 
     public float speed = 12f;
     public FootstepsSystem footsteps;
 
-    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -92,14 +82,10 @@ public class Player_Controller : MonoBehaviour
 
 
     }
-
     // Update is called once per frame
     void Update()
     {
-
         Ground_Check();
-
-
 
     }
 
@@ -108,12 +94,6 @@ public class Player_Controller : MonoBehaviour
         move_Player();
         Jump();
         Speed_crouched();
-
-
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
-        {
-            PlayFootStepAudio();
-        }
 
     }
     void move_Player()
@@ -125,10 +105,12 @@ public class Player_Controller : MonoBehaviour
 
         controller.Move(move1 * speed_current * Time.deltaTime);
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
 
-        if (x != 0f || z != 0f)
+        //soundfootstep
+        p_X = Input.GetAxis("Horizontal");
+        p_Z = Input.GetAxis("Vertical");
+
+        if (p_X != 0f || p_Z != 0f)
         {
             footsteps.PlayFootSteps();
         }
@@ -137,10 +119,8 @@ public class Player_Controller : MonoBehaviour
             footsteps.ResetFootSteps();
         }
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * p_X + transform.forward * p_Z;
         controller.Move(move * speed * Time.deltaTime);
-
-
 
     }
 
@@ -199,33 +179,13 @@ public class Player_Controller : MonoBehaviour
         }
 
         controller.height = Mathf.Lerp(controller.height, heigh, 3.5f * Time.deltaTime);
-
     }
 
     private void PlayJumpSound()
     {
         AudioSource.clip = jump_sound;
         AudioSource.Play();
-        Debug.Log("pulando");
-    }
-
-    private void PlayFootStepAudio()
-    {
-        if (controller.isGrounded)
-        {
-            return;
-        }
-
-        Debug.Log("andandotoca raul");
-        // pick & play a random footstep sound from the array,
-        // excluding sound at index 0
-        int n = Random.Range(0, foostep_sound.Count);
-        AudioSource.clip = foostep_sound[n];
-        AudioSource.PlayOneShot(AudioSource.clip);
-        Debug.Log("tocou");
-        // move picked sound to index 0 so it's not picked next time
-        //foostep_sound[n] = foostep_sound[0];
-        //foostep_sound[0] = AudioSource.clip;
+        //Debug.Log("pulando");
     }
 
     public void Checkpoint_Check_Verde(int checknumber)
