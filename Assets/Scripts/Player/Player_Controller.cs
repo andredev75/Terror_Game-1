@@ -87,6 +87,10 @@ public class Player_Controller : MonoBehaviour
     {
         Ground_Check();
 
+
+
+
+
     }
 
     void FixedUpdate()
@@ -129,6 +133,11 @@ public class Player_Controller : MonoBehaviour
 
         isground = Physics.CheckSphere(ground_check.position, groud_Distance, ground_Mask);
 
+        if (isground && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
         controller.Move(move1 * speed_current * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
@@ -153,7 +162,7 @@ public class Player_Controller : MonoBehaviour
         {
             speed_current = speed_speed;
             isspeed = true;
-            Debug.Log("correndo");
+            //Debug.Log("correndo");
 
         }
         else
@@ -204,7 +213,7 @@ public class Player_Controller : MonoBehaviour
                 lanterna_v4.SetActive(true);
                 lanterna_VERMELHO.SetActive(false);
                 Destroy(portao);
-                FindObjectOfType<Audio_menager>().Play("Terminoupuzzle");
+                FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
 
             }
         }
@@ -227,6 +236,7 @@ public class Player_Controller : MonoBehaviour
         else
         {
             next_Checkpoint = 0;
+            FindObjectOfType<Audio_menager>().Play("Errou_puzzle");
             Debug.Log("errou");
         }
 
