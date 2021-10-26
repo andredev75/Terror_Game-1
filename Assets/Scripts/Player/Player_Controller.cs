@@ -49,15 +49,25 @@ public class Player_Controller : MonoBehaviour
     private bool isspeed;
     private bool iscrouched = false;
 
-    private int next_Checkpoint;
+    private int next_Checkpoint = 0;
 
     [Header("Puzzle Verde")]
     public GameObject lanterna_v1;
     public GameObject lanterna_v2;
     public GameObject lanterna_v3;
     public GameObject lanterna_v4;
-    public GameObject lanterna_VERMELHO;
+    public GameObject lanterna_VERMELHO1;
+    public GameObject lanterna_VERMELHO2;
+    public GameObject lanterna_VERMELHO3;
+    public GameObject lanterna_v6;
+    public GameObject lanterna_v7;
     public GameObject portao;
+
+
+    public bool terminou_p1 = false;
+    public bool terminou_p2 = false;
+    public bool terminou_p3 = false;
+
 
 
     [Header("Som dos passos")]
@@ -211,9 +221,10 @@ public class Player_Controller : MonoBehaviour
                 lanterna_v2.SetActive(true);
                 lanterna_v3.SetActive(true);
                 lanterna_v4.SetActive(true);
-                lanterna_VERMELHO.SetActive(false);
-                Destroy(portao);
+                lanterna_VERMELHO1.SetActive(false);
                 FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
+                terminou_p1 = true;
+                Liberar_Portal();
 
             }
         }
@@ -227,41 +238,41 @@ public class Player_Controller : MonoBehaviour
         if (checknumber == next_Checkpoint)
         {
             next_Checkpoint++;
-            Debug.Log("acertou");
+            //Debug.Log("acertou");
+            FindObjectOfType<Audio_menager>().Play("Acertou_puzzle");
             if (next_Checkpoint == Puzzle_Vermelho_Menager.instance.allcheckpoint.Length)
             {
-                Debug.Log("venceu o puzzle vermelho");
+                //Debug.Log("venceu o puzzle vermelho");
+                FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
+                lanterna_v6.SetActive(true);
+                lanterna_VERMELHO2.SetActive(false);
+                terminou_p2 = true;
+                Liberar_Portal();
             }
         }
         else
         {
             next_Checkpoint = 0;
             FindObjectOfType<Audio_menager>().Play("Errou_puzzle");
-            Debug.Log("errou");
+            //Debug.Log("errou");
         }
 
 
     }
 
-    public void Checkpoint_Check_Azul(int checknumber)
+    public void Checkpoint_Check_Azul()
     {
+        terminou_p3 = true;
 
-        if (checknumber == next_Checkpoint)
+    }
+
+
+    public void Liberar_Portal()
+    {
+        if (terminou_p1 == true && terminou_p2 == true && terminou_p3 == true)
         {
-            next_Checkpoint++;
-            Debug.Log("acertou");
-            if (next_Checkpoint == Puzzle_Azul_Menager.instance.allcheckpoint.Length)
-            {
-                Debug.Log("venceu o puzzle Azul");
-            }
+            Destroy(portao);
         }
-        else
-        {
-            next_Checkpoint = 0;
-            Debug.Log("errou");
-        }
-
-
     }
 
 

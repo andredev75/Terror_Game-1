@@ -10,18 +10,18 @@ public class Menu_menager : MonoBehaviour
     public static Menu_menager instante;
     public static bool game_paused = false;
 
-    public GameObject pausemenuUI; 
-    
-     void Awake() 
+    public GameObject pausemenuUI;
+
+    void Awake()
     {
         instante = this;
- 
+
     }
 
     void Update()
     {
-        
-        if(Input.GetKeyDown(KeyCode.Escape))
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
 
             if (game_paused)
@@ -35,22 +35,23 @@ public class Menu_menager : MonoBehaviour
             }
 
         }
-        
+
     }
 
 
 
-    public void Loadscene (string lvlname)
+    public void Loadscene(string lvlname)
     {
+        StartCoroutine(tocarsom());
         SceneManager.LoadScene(lvlname);
     }
 
-    public void QuitGame ()
+    public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void Resume ()
+    public void Resume()
     {
         pausemenuUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
@@ -58,12 +59,19 @@ public class Menu_menager : MonoBehaviour
         game_paused = false;
     }
 
-    public void Pause ()
+    public void Pause()
     {
         Cursor.lockState = CursorLockMode.None;
         pausemenuUI.SetActive(true);
         Cursor.visible = true;
         Time.timeScale = 0f;
         game_paused = true;
+    }
+
+    IEnumerator tocarsom()
+    {
+        FindObjectOfType<Audio_menager>().Play("Confirmação");
+        yield return new WaitForSeconds(10f);
+
     }
 }

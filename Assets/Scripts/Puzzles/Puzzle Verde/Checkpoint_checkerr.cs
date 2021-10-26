@@ -9,10 +9,19 @@ public class Checkpoint_checkerr : MonoBehaviour
     private Camera cam;
     public float ray_distance = 3f;
 
+
+
+    private int num = 0;
+    private int next_Check = 0;
     public Collider other1;
     public Collider other2;
     public Collider other3;
-    private int num = 0;
+
+    public bool passou1 = false;
+    public bool passou2;
+    public bool passou3;
+
+    private int next_Checkpoint = 0;
 
     private void Start()
     {
@@ -30,7 +39,32 @@ public class Checkpoint_checkerr : MonoBehaviour
                 UI_Menager.instance.cursor(true);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Check_Interec_Puzzle_Azul();
+
+                    if (hit.transform.gameObject.GetComponent<Checkpoints>().checknumber == 0 && passou1 == false)
+                    {
+                        Debug.Log("acertou");
+                        passou1 = true;
+                        FindObjectOfType<Audio_menager>().Play("Acertou_puzzle");
+
+                    }
+
+                    if (hit.transform.gameObject.GetComponent<Checkpoints>().checknumber == 1 && passou1 == true)
+                    {
+                        Debug.Log("acertou");
+                        passou2 = true;
+                        FindObjectOfType<Audio_menager>().Play("Acertou_puzzle");
+                    }
+
+
+                    if (hit.transform.gameObject.GetComponent<Checkpoints>().checknumber == 2 && passou2 == true)
+                    {
+                        Debug.Log("venceu o puzzle Azul");
+                        FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
+                        Player_Controller.instance.Checkpoint_Check_Azul();
+                    }
+
+
+
                 }
 
             }
@@ -62,12 +96,6 @@ public class Checkpoint_checkerr : MonoBehaviour
     }
 
 
-    void Check_Interec_Puzzle_Azul()
-    {
-        Debug.Log("passou" + other1.GetComponent<Checkpoints>().checknumber);
-        player.Checkpoint_Check_Azul(other1.GetComponent<Checkpoints>().checknumber);
-
-    }
 
 
 }

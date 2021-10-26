@@ -35,17 +35,17 @@ public class Player_Interect : MonoBehaviour
         Check_Interec();
     }
 
-    void Check_Interec ()
+    void Check_Interec()
     {
 
-        if(isviewer)
+        if (isviewer)
         {
-            if(current_interactable.item.isinteractable && Input.GetMouseButton(0))
+            if (current_interactable.item.isinteractable && Input.GetMouseButton(0))
             {
                 Rotateobject();
             }
 
-            if(cam_finishi && Input.GetMouseButtonDown(1))
+            if (cam_finishi && Input.GetMouseButtonDown(1))
             {
                 finishi_viewer();
             }
@@ -62,16 +62,16 @@ public class Player_Interect : MonoBehaviour
         {
             Interactables interactables = hit.collider.GetComponent<Interactables>();
 
-            if(interactables != null)
+            if (interactables != null)
             {
                 UI_Menager.instance.cursor(true);
-                if(Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if(interactables.ismoving)
+                    if (interactables.ismoving)
                     {
                         return;
                     }
-                     UI_Menager.instance.cursor(false);
+                    UI_Menager.instance.cursor(false);
                     Onview.Invoke();
 
                     current_interactable = interactables;
@@ -79,16 +79,16 @@ public class Player_Interect : MonoBehaviour
                     isviewer = true;
                     Interacao(current_interactable.item);
 
-                    
 
-                    if(current_interactable.item.isinteractable)
+
+                    if (current_interactable.item.isinteractable)
                     {
                         origin_position = current_interactable.transform.position;
                         origin_rotation = current_interactable.transform.rotation;
                         StartCoroutine(Moving_Object(current_interactable, object_viewer.position));
                     }
 
-                    
+
                 }
             }
             else
@@ -110,24 +110,24 @@ public class Player_Interect : MonoBehaviour
         UI_Menager.instance.Set_Legend("");
     }
 
-    void finishi_viewer ()
+    void finishi_viewer()
     {
         cam_finishi = false;
         isviewer = false;
         UI_Menager.instance.Set_back_interactable(false);
 
-        if(current_interactable.item.isinteractable)
+        if (current_interactable.item.isinteractable)
         {
             current_interactable.transform.rotation = origin_rotation;
             StartCoroutine(Moving_Object(current_interactable, origin_position));
-        
+
         }
 
         On_finishi_viwer.Invoke();
     }
 
 
-    IEnumerator Moving_Object (Interactables obj, Vector3 position)
+    IEnumerator Moving_Object(Interactables obj, Vector3 position)
     {
         obj.ismoving = true;
         float timer = 0f;
@@ -135,7 +135,7 @@ public class Player_Interect : MonoBehaviour
         {
             obj.transform.position = Vector3.Lerp(obj.transform.position, position, Time.deltaTime * 5);
             timer += Time.deltaTime;
-            
+
             yield return null;
         }
 
@@ -144,16 +144,16 @@ public class Player_Interect : MonoBehaviour
         obj.ismoving = false;
     }
 
-    void Rotateobject ()
+    void Rotateobject()
     {
         float eixo_x = Input.GetAxis("Mouse X");
         float eixo_y = Input.GetAxis("Mouse Y");
-        current_interactable.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * eixo_y * rotate_speed, Space.World );
-        current_interactable.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * eixo_x * rotate_speed, Space.World );
+        current_interactable.transform.Rotate(cam.transform.right, -Mathf.Deg2Rad * eixo_y * rotate_speed, Space.World);
+        current_interactable.transform.Rotate(cam.transform.up, -Mathf.Deg2Rad * eixo_x * rotate_speed, Space.World);
     }
 
 
-    void Interacao (Item item)
+    void Interacao(Item item)
     {
         if (item.image != null)
         {
@@ -161,7 +161,7 @@ public class Player_Interect : MonoBehaviour
         }
         audioplayer.PlayAudio(item.audioClip);
         UI_Menager.instance.Set_Legend(item.text);
-        Invoke("Cam_finishi", item.audioClip.length + 1f );
+        Invoke("Cam_finishi", item.audioClip.length + 1f);
     }
 
 

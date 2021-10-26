@@ -15,6 +15,9 @@ public class UI_Menager : MonoBehaviour
     public TMP_Text legend;
     public Image Img_Interactable;
 
+
+    public GameObject Morte_UI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,32 +27,32 @@ public class UI_Menager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void cursor (bool state)
+    public void cursor(bool state)
     {
         mao_cursor.SetActive(state);
     }
 
-    public void Set_back_interactable (bool state)
+    public void Set_back_interactable(bool state)
     {
         back_interactable.SetActive(state);
 
-        if(!state)
+        if (!state)
         {
             Img_Interactable.enabled = false;
         }
     }
 
-    public void Set_Legend (string text)
+    public void Set_Legend(string text)
     {
         legend.text = text;
     }
 
-    public void Set_Image (Sprite sprite)
+    public void Set_Image(Sprite sprite)
     {
-       Img_Interactable.sprite = sprite;
-       Img_Interactable.enabled = true;
+        Img_Interactable.sprite = sprite;
+        Img_Interactable.enabled = true;
     }
 }

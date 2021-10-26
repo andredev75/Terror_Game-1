@@ -5,12 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - terra
-  - Teleport
   - Checkpoint_Verde
   - Checkpoint_Vermelho
   - Checkpoint_Azul
   - TERRA
-  - Botao_Azul
+  - Narrador_Caminho
+  - Checkpoint_Azul1
+  - Checkpoint_Azul2
+  - Checkpoint_Azul3
   layers:
   - Default
   - TransparentFX
