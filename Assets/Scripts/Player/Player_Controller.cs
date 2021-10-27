@@ -263,6 +263,8 @@ public class Player_Controller : MonoBehaviour
     public void Checkpoint_Check_Azul()
     {
         terminou_p3 = true;
+        lanterna_v7.SetActive(true);
+        lanterna_VERMELHO3.SetActive(false);
 
     }
 

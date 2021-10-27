@@ -18,6 +18,9 @@ public class Player_Interect : MonoBehaviour
 
     public UnityEvent Onview;
     public UnityEvent On_finishi_viwer;
+    public UnityEvent Onview_control;
+    public UnityEvent On_finishi_contrl;
+
 
     private Audio_P audioplayer;
 
@@ -73,6 +76,7 @@ public class Player_Interect : MonoBehaviour
                     }
                     UI_Menager.instance.cursor(false);
                     Onview.Invoke();
+                    Onview_control.Invoke();
 
                     current_interactable = interactables;
 
@@ -124,6 +128,7 @@ public class Player_Interect : MonoBehaviour
         }
 
         On_finishi_viwer.Invoke();
+        On_finishi_contrl.Invoke();
     }
 
 
