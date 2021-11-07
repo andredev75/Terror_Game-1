@@ -11,6 +11,8 @@ TagManager:
   - Checkpoint_Azul1
   - Checkpoint_Azul2
   - TERRA
+  - AGUA
+  - Madeira
   layers:
   - Default
   - TransparentFX
