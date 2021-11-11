@@ -4,26 +4,24 @@ using UnityEngine;
 
 public class Mapa_Audio_Geral : MonoBehaviour
 {
-    public AudioSource play_Audio;
-    public float Esperar_prox = 10f;
-    public bool gatilho_delete = false;
+    public AudioClip play_audio;
+    public float volume;
+    AudioSource audio;
+    public bool playing = false;
 
-    private void OnTriggerEnter(Collider other)
+    public void Start()
     {
-        play_Audio.Play();
-        gatilho_delete = true;
+        audio = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    void OnTriggerEnter()
     {
-        if (gatilho_delete == true)
+        if (!playing)
         {
-            Esperar_prox -= Time.deltaTime;
-            if (Esperar_prox <= 0)
-            {
-                Destroy(gameObject);
-            }
-
+            audio.PlayOneShot(play_audio, volume);
+            playing = true;
         }
     }
+
+
 }
