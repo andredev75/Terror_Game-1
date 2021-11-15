@@ -33,13 +33,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1592f81d117f4429aac20ed332329493: 0.65
-    - Vector1_6d611fd473fd4f4289055c1c5f883a43: 0.338
-    - Vector1_94c7a8e9f3ca4408bd6d5a18dd0ae309: 0.35
-    - Vector1_a5ce593936db4cdb821eaaf23c4470d8: 0.252
+    - Vector1_1592f81d117f4429aac20ed332329493: 0.796
+    - Vector1_6d611fd473fd4f4289055c1c5f883a43: 0.861
+    - Vector1_94c7a8e9f3ca4408bd6d5a18dd0ae309: 0.854
+    - Vector1_a5ce593936db4cdb821eaaf23c4470d8: 0.331
     m_Colors:
-    - Color_10051d115d5b43c9971ae833b1c7aa22: {r: 0.8301887, g: 0.21537916, b: 0.24437954,
+    - Color_10051d115d5b43c9971ae833b1c7aa22: {r: 2.4335716, g: 0.03822364, b: 0.03822364,
+        a: 1}
+    - Color_7911a85862fe4cb3aa0b66af7d10381a: {r: 0.754717, g: 0.24563903, b: 0.15307939,
         a: 0.3921569}
-    - Color_7911a85862fe4cb3aa0b66af7d10381a: {r: 1, g: 1, b: 1, a: 0.3921569}
-    - Color_a0964440687b469d874dd88697e87c0a: {r: 1, g: 1, b: 1, a: 0.3921569}
+    - Color_a0964440687b469d874dd88697e87c0a: {r: 0.8490566, g: 0.01201493, b: 0.15851814,
+        a: 0.3921569}
   m_BuildTextureStacks: []
