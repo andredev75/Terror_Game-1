@@ -8,6 +8,7 @@ public class Sound_Menu : MonoBehaviour
     void Start()
     {
         FindObjectOfType<Audio_menager>().Play("Fogueira");
+        FindObjectOfType<Audio_menager>().Play("Menu");
     }
 
     // Update is called once per frame
