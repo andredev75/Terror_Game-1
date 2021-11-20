@@ -50,6 +50,9 @@ public class UI_Menager : MonoBehaviour
         legend.text = text;
     }
 
+
+
+
     public void Set_Image(Sprite sprite)
     {
         Img_Interactable.sprite = sprite;
