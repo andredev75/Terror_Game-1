@@ -6,6 +6,6 @@ public class armadilha_temp : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) 
     {
-         Destroy(gameObject,2f);   
+         Destroy(gameObject,1f);   
     }
 }

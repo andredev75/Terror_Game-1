@@ -52,18 +52,12 @@ public class Player_Controller : MonoBehaviour
     private int next_Checkpoint = 0;
 
     [Header("Puzzle Verde")]
-    public GameObject lanterna_v1;
-    public GameObject lanterna_v2;
-    public GameObject lanterna_v3;
-    public GameObject lanterna_v4;
-    public GameObject lanterna_VERMELHO1;
-    public GameObject lanterna_VERMELHO2;
-    public GameObject lanterna_VERMELHO3;
-    public GameObject lanterna_v6;
-    public GameObject lanterna_v7;
-    public GameObject portao;
+    public GameObject portao1;
+    public GameObject portao2;
 
-
+    [Header("Puzzle Final Santuario")]
+    public GameObject portao_sant1;
+    public GameObject portao_sant2;
     public bool terminou_p1 = false;
     public bool terminou_p2 = false;
     public bool terminou_p3 = false;
@@ -217,12 +211,9 @@ public class Player_Controller : MonoBehaviour
             {
 
                 Debug.Log("venceu o puzzle verde");
-                lanterna_v1.SetActive(true);
-                lanterna_v2.SetActive(true);
-                lanterna_v3.SetActive(true);
-                lanterna_v4.SetActive(true);
-                lanterna_VERMELHO1.SetActive(false);
                 FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
+                Destroy(portao1);
+                portao2.SetActive(true);
                 terminou_p1 = true;
                 Liberar_Portal();
 
@@ -244,8 +235,6 @@ public class Player_Controller : MonoBehaviour
             {
                 //Debug.Log("venceu o puzzle vermelho");
                 FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
-                lanterna_v6.SetActive(true);
-                lanterna_VERMELHO2.SetActive(false);
                 terminou_p2 = true;
                 Liberar_Portal();
             }
@@ -263,8 +252,6 @@ public class Player_Controller : MonoBehaviour
     public void Checkpoint_Check_Azul()
     {
         terminou_p3 = true;
-        lanterna_v7.SetActive(true);
-        lanterna_VERMELHO3.SetActive(false);
 
     }
 
@@ -273,7 +260,8 @@ public class Player_Controller : MonoBehaviour
     {
         if (terminou_p1 == true && terminou_p2 == true && terminou_p3 == true)
         {
-            Destroy(portao);
+            Destroy(portao_sant1);
+            portao_sant2.SetActive(true);
         }
     }
 
