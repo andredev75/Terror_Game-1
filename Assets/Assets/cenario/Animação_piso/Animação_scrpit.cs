@@ -20,13 +20,22 @@ public class Animação_scrpit : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("tocou");
-        controle.SetInteger("acao", 1);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("tocou");
+            controle.SetInteger("acao", 1);
+
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("saindo");
-        controle.SetInteger("acao", 2);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("saindo");
+            controle.SetInteger("acao", 2);
+
+        }
+
     }
 }

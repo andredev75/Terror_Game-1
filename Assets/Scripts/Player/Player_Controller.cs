@@ -233,7 +233,7 @@ public class Player_Controller : MonoBehaviour
             FindObjectOfType<Audio_menager>().Play("Acertou_puzzle");
             if (next_Checkpoint == Puzzle_Vermelho_Menager.instance.allcheckpoint.Length)
             {
-                //Debug.Log("venceu o puzzle vermelho");
+                Debug.Log("venceu o puzzle vermelho");
                 FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
                 terminou_p2 = true;
                 Liberar_Portal();
@@ -252,6 +252,7 @@ public class Player_Controller : MonoBehaviour
     public void Checkpoint_Check_Azul()
     {
         terminou_p3 = true;
+        Debug.Log("venceu o puzzle azul");
 
     }
 
