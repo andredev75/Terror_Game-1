@@ -12,7 +12,8 @@ public class susto : MonoBehaviour
     public float tempo_destruir;
     public GameObject monstro;
     private BoxCollider[] colisore;
-    private bool ativar = true;
+    private bool ativar;
+    public bool contar;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class susto : MonoBehaviour
     {
         if (ativar == true)
         {
+            monstro.SetActive(true);
             transform.Translate(Vector3.forward * Time.deltaTime * velocida_movimento);
             cronometro += Time.deltaTime;
             Debug.Log("entrou");
@@ -37,13 +39,16 @@ public class susto : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter()
     {
-        audio.PlayOneShot(som_Susto, volume);
         foreach (BoxCollider colisore in colisore)
         {
             colisore.enabled = false;
         }
+
+        audio.PlayOneShot(som_Susto, volume);
+        Destroy(gameObject, audio.clip.length);
+        ativar = true;
     }
 
 
