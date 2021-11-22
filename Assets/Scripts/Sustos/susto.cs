@@ -8,46 +8,43 @@ public class susto : MonoBehaviour
     AudioSource audio;
     public float volume;
     public float velocida_movimento = 20;
-    public float cronometro;
+    public float cronometro = 5;
     public float tempo_destruir;
     public GameObject monstro;
     private BoxCollider[] colisore;
-    private bool ativar;
+    private bool ativar = false;
     public bool contar;
 
     void Start()
     {
         audio = GetComponent<AudioSource>();
-        colisore = gameObject.GetComponents<BoxCollider>();
+        monstro.SetActive(false);
     }
 
     void Update()
     {
         if (ativar == true)
         {
-            monstro.SetActive(true);
             transform.Translate(Vector3.forward * Time.deltaTime * velocida_movimento);
-            cronometro += Time.deltaTime;
-            Debug.Log("entrou");
+            cronometro -= Time.deltaTime;
         }
 
-        if (cronometro >= tempo_destruir)
+        if (cronometro < 0)
         {
-            Debug.Log("entrou2");
-            ativar = false;
-            monstro.SetActive(false);
+            Destroy(monstro);
+            Destroy(gameObject, audio.clip.length);
         }
+
     }
 
     void OnTriggerEnter()
     {
-        foreach (BoxCollider colisore in colisore)
-        {
-            colisore.enabled = false;
-        }
-
+        monstro.SetActive(true);
+        FindObjectOfType<Audio_menager>().Play("Susto1");
         audio.PlayOneShot(som_Susto, volume);
-        Destroy(gameObject, audio.clip.length);
+
+
+        //Destroy(gameObject, audio.clip.length);
         ativar = true;
     }
 
