@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Santurio_Papel
   m_EditorClassIdentifier: 
   isinteractable: 0
-  audioClip: {fileID: 8300000, guid: b7fa0d3d91d153048afb3b495112968b, type: 3}
+  audioClip: {fileID: 8300000, guid: 4d173531368f9f647a33c0b978e83689, type: 3}
   text: 
-  image: {fileID: 21300000, guid: 19b806fcbac82894cb3fba5cbf23ddd5, type: 3}
+  image: {fileID: 21300000, guid: 94504fb903939d04884ab4a12563bb1d, type: 3}
