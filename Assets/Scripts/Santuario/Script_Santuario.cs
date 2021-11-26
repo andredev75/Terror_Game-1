@@ -45,11 +45,14 @@ public class Script_Santuario : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.Space))
+        if (fadein)
         {
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("Menu");
+            if (Input.GetKey(KeyCode.Space))
+            {
+                Cursor.lockState = CursorLockMode.None;
+                SceneManager.LoadScene("Menu");
 
+            }
         }
     }
 

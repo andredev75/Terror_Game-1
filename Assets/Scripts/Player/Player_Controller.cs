@@ -73,6 +73,10 @@ public class Player_Controller : MonoBehaviour
     public float speed = 12f;
     public FootstepsSystem footsteps;
 
+
+    public GameObject fogo1;
+    public GameObject col_fogo;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -236,6 +240,8 @@ public class Player_Controller : MonoBehaviour
                 Debug.Log("venceu o puzzle vermelho");
                 FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
                 terminou_p2 = true;
+                fogo1.SetActive(false);
+                col_fogo.SetActive(false);
                 Liberar_Portal();
             }
         }

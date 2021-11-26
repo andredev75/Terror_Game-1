@@ -24,7 +24,7 @@ public class Collected : MonoBehaviour
         Vector3 ray_center = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
         if (Physics.Raycast(ray_center, cam.transform.forward, out hit, ray_distance))
         {
-            if (hit.collider.GetComponent<teste>())
+            if (hit.collider.GetComponent<teste1>())
             {
                 UI_Menager.instance.cursor(true);
                 if (Input.GetMouseButtonDown(0))
