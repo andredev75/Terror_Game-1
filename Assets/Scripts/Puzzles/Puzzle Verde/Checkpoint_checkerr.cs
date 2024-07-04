@@ -60,6 +60,8 @@ public class Checkpoint_checkerr : MonoBehaviour
                     {
                         Debug.Log("venceu o puzzle Azul");
                         FindObjectOfType<Audio_menager>().Play("Terminou_puzzle");
+                        UI_Menager.instance.Set_Legend("[Puzzle resolvido]");
+                        StartCoroutine(ZerarLegenda(4));
                         Player_Controller.instance.Checkpoint_Check_Azul();
                     }
 
@@ -73,6 +75,12 @@ public class Checkpoint_checkerr : MonoBehaviour
         }
 
 
+    }
+
+    IEnumerator ZerarLegenda(int tempoLegenda)
+    {
+        yield return new WaitForSeconds(tempoLegenda);
+        UI_Menager.instance.Set_Legend("");
     }
 
     private void OnTriggerEnter(Collider other)

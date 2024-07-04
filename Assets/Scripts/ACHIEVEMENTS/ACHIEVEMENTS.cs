@@ -26,9 +26,9 @@ public class ACHIEVEMENTS : MonoBehaviour
     {
         achsound.Play();
         achnote.SetActive(true);
-
+        
         yield return new WaitForSeconds(5);
-
+        UI_Menager.instance.Set_Legend("");
         achnote.SetActive(false);
         Destroy(gameObject);
 

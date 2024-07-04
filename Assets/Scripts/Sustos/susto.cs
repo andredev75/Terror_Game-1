@@ -42,10 +42,18 @@ public class susto : MonoBehaviour
         monstro.SetActive(true);
         FindObjectOfType<Audio_menager>().Play("Susto1");
         audio.PlayOneShot(som_Susto, volume);
+        UI_Menager.instance.Set_Legend("[GRITO DESCONHECIDO]");
+        StartCoroutine(ZerarLegenda(1));
 
 
         //Destroy(gameObject, audio.clip.length);
         ativar = true;
+    }
+
+    IEnumerator ZerarLegenda(int tempoLegenda)
+    {
+        yield return new WaitForSeconds(tempoLegenda);
+        UI_Menager.instance.Set_Legend("");
     }
 
 

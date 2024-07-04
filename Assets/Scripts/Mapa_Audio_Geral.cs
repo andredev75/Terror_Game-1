@@ -12,19 +12,24 @@ public class Mapa_Audio_Geral : MonoBehaviour
 
     public int time;
 
+    public string OrcLegenda1 = "[ORC] \n  Este lugar não me parece muito amigável, Elfo. Fique aqui. Vou investigar o  lugar. Acharei uma saída e alguma erva que possa ajudar na tua cura..... Hmmm… Isto aqui deve abrir pelo outro lado. ";
+
     public void Start()
     {
         audio = GetComponent<AudioSource>();
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
         if (!playing)
         {
             audio.PlayOneShot(play_audio, volume);
             playing = true;
+            if(this.gameObject.name == "Tag_sonora_narrador_5 (1)")
+            {
+                UI_Menager.instance.Set_Legend(OrcLegenda1);
+            }
 
-            UI_Menager.instance.Set_Legend(text);
             StartCoroutine(Aguardar_sair_legend());
         }
     }
