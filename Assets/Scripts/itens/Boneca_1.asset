@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isinteractable: 1
   audioClip: {fileID: 8300000, guid: e6cfe09fa36ccb34799a8275ccb2ca97, type: 3}
-  text: "Uma estatueta\u2026 Conhe\xE7o isto. \xC9 um artefato cerimonial. Isto \xE9
-    arte dos Kaltz. Ser\xE1 que este lugar \xE9 um santu\xE1rio? "
+  text: "[ORC] Uma estatueta\u2026 Conhe\xE7o isto. \xC9 um artefato cerimonial.
+    Isto \xE9 arte dos Kaltz. Ser\xE1 que este lugar \xE9 um santu\xE1rio? "
   image: {fileID: 0}

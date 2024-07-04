@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isinteractable: 1
   audioClip: {fileID: 8300000, guid: 1c6be581a08b7ca4f9f708e3d54a6ba9, type: 3}
-  text: "Hm... eu j\xE1 vi isso antes."
+  text: "[ORC] Hm... eu j\xE1 vi isso antes."
   image: {fileID: 0}

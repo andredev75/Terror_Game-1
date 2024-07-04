@@ -18892,7 +18892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460766427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.2, y: 6.7, z: -186.03}
+  m_LocalPosition: {x: 19.2, y: 9.64, z: -186.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 107140811}
@@ -26998,7 +26998,7 @@ MonoBehaviour:
   text: "Um santu\xE1rio de Vatnsfriga, Senhora das Aguas\u2026  Um enigma kaltz\u2026
     Deve liberar algum dos segredos deste lugar\u2026 "
   playing: 0
-  time: 0
+  time: 10
 --- !u!65 &703114951
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82820,7 +82820,7 @@ MonoBehaviour:
     suponho. Eu matei todos estes malditos.Este caminho est\xE1 selado por magia\u2026
     Preciso descobrir uma maneira para quebrar este selo."
   playing: 0
-  time: 22
+  time: 15
 --- !u!65 &1530141965
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -101086,7 +101086,7 @@ MonoBehaviour:
     o  lugar. Acharei uma sa\xEDda e alguma erva que possa ajudar na tua cura.....
     Hmmm\u2026 Isto aqui deve abrir pelo outro lado. "
   playing: 0
-  time: 20
+  time: 15
 --- !u!65 &1890440103
 BoxCollider:
   m_ObjectHideFlags: 0
